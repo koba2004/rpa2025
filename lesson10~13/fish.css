@@ -1,0 +1,24 @@
+/* for fish.html */
+#about {
+  background-color: blue;
+  color: white;
+  margin: 0;
+  padding: 1em;
+}
+#fishes {
+  margin: 1em;
+}
+#fishes div {
+  border: 1px solid gray;
+  padding: 1em;
+  margin: 0.5em;
+}
+#fishes h2 {
+  border-bottom: 2px solid #9090ff;
+  background-color: #f0f0f0;
+  padding: 0.2em;
+}
+.price {
+  margin-left: 3em;
+  border-bottom: 1px dotted #e0e0e0;
+}

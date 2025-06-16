@@ -13,8 +13,8 @@ def split_list():
         result[name] = calc_user(rows)
         print(name, result[name]['total'])
     # ファイルに結果を保存 --- (*4)
-    with open(out_file, "wt") as fp:
-        json.dump(result, fp)
+    with open(out_file, "wt", encoding="utf-8") as fp:
+        json.dump(result, fp, ensure_ascii=False)
 
 # 入力ファイルを読んで顧客ごとに分割 --- (*5)
 def read_and_split(in_file):
