@@ -1,2 +1,2 @@
-account = 'js23007@anabuki-net.ne.jp'
+account = 'kobak730@gmail.com'
 password = '234567ko'

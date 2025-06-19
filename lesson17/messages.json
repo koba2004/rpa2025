@@ -1,0 +1,18 @@
+[
+  {
+    "type": "textV2",
+    "text": "Hello, world.{cat}",
+    "substitution": {
+      "cat": {
+        "type": "emoji",
+        "productId": "5ac21184040ab15980c9b43a",
+        "emojiId": "001"
+      }
+    }
+  },
+  {
+    "type": "sticker",
+    "packageId": "446",
+    "stickerId": "1988"
+  }
+]
