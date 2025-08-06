@@ -43,31 +43,37 @@ def create_invoice_for_customer(customer_name, details):
     ws["A6"] = "自社名"
     ws["B6"] = CORPORATE_NAME
 
+
     ws["A8"] = "前回請求額"
     ws["B8"] = f"{PREVIOUS_BILLING_AMOUNT}円"
     ws["A8"].fill = light_blue_fill
     ws["B8"].fill = light_blue_fill
+    
   
     ws["A9"] = "当月お支払い額"
     ws["B9"] = f"{CURRENT_PAYMENT_AMOUNT}円"
     ws["A9"].fill = light_blue_fill
     ws["B9"].fill = light_blue_fill
+    
 
     total_amount = sum(item["total_price"] for item in details)
     ws["A10"] = "当月お買い上げ金額"
     ws["B10"] = f"{total_amount}円"
     ws["A10"].fill = light_blue_fill
     ws["B10"].fill = light_blue_fill
+    
 
     ws["A11"] = "ご請求額"
     ws["B11"] = f"{total_amount}円"
     ws["A11"].fill = light_blue_fill
     ws["B11"].fill = light_blue_fill
+    
 
     ws["A13"] = "お買い上げ明細"
     ws["A13"].font = header_font
     ws["A13"].font = header_font
     ws["A13"].fill = header_fill
+
 
     # 請求書のヘッダーに書き込むための処理
     headers = ["お買い上げ日", "商品コード", "商品名", "単価", "数量", "金額"]
