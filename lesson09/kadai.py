@@ -13,7 +13,7 @@ def calc_absence_report(input_file, output_file):
     records = []
 
     # 生徒名：B10～B36 → 行番号：10～36
-    for row in range(10, 37):
+    for row in range(10, 37):   # 行の10~36をたどる
         student_name = ws.cell(row=row, column=2).value  # B列＝2
         if not student_name:
             continue
@@ -25,7 +25,7 @@ def calc_absence_report(input_file, output_file):
             if subject is None:
                 break  # 科目がない＝終了
 
-            absence_count = ws.cell(row=row, column=col).value
+            absence_count = ws.cell(row=row, column=col).value 
             total_classes = ws.cell(row=2, column=col).value  # 授業数は2行目にある
 
             # 欠席数や授業数が数値でなければスキップ
@@ -37,6 +37,7 @@ def calc_absence_report(input_file, output_file):
 
             absence_rate = absence_count / total_classes
 
+           # 変数名の選定
             records.append({
                 "student_name": student_name,
                 "subject": subject,
@@ -46,41 +47,6 @@ def calc_absence_report(input_file, output_file):
             })
 
             col += 1
-
-
-
-# def calc_absence_report(input_file, output_file):
-#     wb_in = openpyxl.load_workbook(input_file)
-#     ws_in = wb_in.active
-
-#     # 読み込みデータを辞書形式に変換（ヘッダー前提）
-#     records = []
-#     for row in ws_in.iter_rows(min_row=2, values_only=True):
-#         if len(row) < 4:
-#             continue  # 列が足りない行は無視
-
-#         student_name = row[0]
-#         subject = row[1]
-#         absence_count = row[2]
-#         total_classes = row[3]
-
-#     # Noneのときは0に変換
-#         absence_count = absence_count if isinstance(absence_count, (int, float)) else 0
-#         total_classes = total_classes if isinstance(total_classes, (int, float)) else 0
-
-#     # 授業数が0ならスキップ（0除算防止）
-#         if total_classes == 0:
-#             continue
-
-#         absence_rate = absence_count / total_classes
-#         records.append({
-#             "student_name": student_name,
-#             "subject": subject,
-#             "absence_count": absence_count,
-#             "total_classes": total_classes,
-#             "absence_rate": absence_rate
-#         })
-
 
     # グループ分け
     over_10 = []
@@ -115,6 +81,7 @@ def calc_absence_report(input_file, output_file):
             for cell in row:
                 cell.alignment = Alignment(horizontal="center")
 
+    # シートを二枚作りたいから、ここで指定
     create_sheet("欠席が多い生徒", over_10)
     create_sheet("欠席が基準を超えた生徒", over_20)
 
@@ -125,7 +92,9 @@ def calc_absence_report(input_file, output_file):
     print(f"{output_file} を作成しました。")
 
 # 実行
+# 参照したいファイルを指定
 input_file = r"C:\projects\rpa2025\lesson09\科目別出席簿サンプル.xlsx"
+# 作りたいファイルの名前をしたい
 output_file = "レポート.xlsx"
 if not os.path.exists(input_file):
     print("指定されたファイルが見つかりません！:", input_file)
