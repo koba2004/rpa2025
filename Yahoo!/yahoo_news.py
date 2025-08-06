@@ -26,4 +26,5 @@ for ul in ul_elements:
         # 表示されている文字列を取り出して、title変数に代入
         title = a.get_text(strip=True)
         if title:
+            # "title"に代入されている内容を表示する
             print("見出し:", title)
